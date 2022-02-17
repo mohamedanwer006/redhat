@@ -19,4 +19,6 @@
 ## [**Systemd**](./systemd.md) <br> 
 ## [**Users-groups**](./users-groups.md) <br> 
 ## [**Vim**](./vim.md) <br> 
+## [**Journald**](./journald.md) <br> 
 ## [**Stratis**](./stratis.md) <br> 
+## [**VDO**](./vdo.md) <br> 

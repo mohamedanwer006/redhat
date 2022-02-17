@@ -71,8 +71,24 @@ mount /startis/my-pool/my-fs /media
 ```
 Add stratis to fstab
 ```bash
-UUid=<uuid> stratis /media xfs defaults,X-systemd.requires=stratisd.service 0 0
+UUid=<uuid> stratis /media xfs defaults,x-systemd.requires=stratisd.service 0 0
 
-# X-systemd.requires=stratisd.service >> The mount option delays mounting 
+# x-systemd.requires=stratisd.service >> The mount option delays mounting 
 # the file system Systemd stratisd.service until after starts the during the boot process.
 ``` 
+## create a snapshot
+```bash
+startis filesystem snapshot my-pool my-fs my-snapshot
+# check snapshot
+startis filesystem snapshot list my-pool
+# revert snapshot
+# remove original file system  my-fs
+startis filesystem destroy my-pool my-fs
+# create a new snapshot with the same name 
+startis filesystem snapshot  my-pool my-snapshot  my-fs 
+# mount new snapshot with original file system name
+# Unmount the snapshot:
+# umount /dev/stratis/my-pool/my-snapshot
+# Destroy the snapshot:
+stratis filesystem destroy my-pool my-fs-snapshot
+```

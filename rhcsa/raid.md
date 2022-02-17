@@ -54,13 +54,13 @@ One machine can have multiple RAID controller. <br> Array made of multiple disks
  - even disks
  - minimum 4 disk
  - usable apace  = 1/2 sum
-```
-                 RAID 0
+```bash
+                 RAID 0                               
          ______________________                                    
-        |                     |          
- || d1 || d2 ||          ||d3 || d4 ||
-|______________|       |______________|                              
-      RAID 1                RAID 1
+        |                     |                                            
+ || d1 || d2 ||          ||d3 || d4 ||                                 
+|______________|       |______________|                                                                                  
+      RAID 1                RAID 1                                        
 ```
 
 
