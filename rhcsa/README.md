@@ -3,6 +3,8 @@
 ## [**Get-started**](./get-started.md) <br> 
 ## [**File_search**](./file_search.md) <br> 
 ## [**Access_control_list**](./access_control_list.md) <br> 
+## [**Ntp_configuration**](./ntp_configuration.md) <br> 
+## [**FireWall**](./firewall.md) <br> 
 ## [**Bootloader_and_kernel**](./bootloader_and_kernel.md)<br> 
 ## [**Boot_process**](./boot_process.md) <br> 
 ## [**Compression_archive**](./compression_archive.md) <br> 

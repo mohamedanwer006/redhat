@@ -63,6 +63,10 @@ systemctl enable --now chronyd
 # check chrony status
 systemctl status chronyd
 
+timedatectl set-ntp true
+# check active
+timedatectl
+
 # configure chrony as client
 vi /etc/chrony.conf
 
