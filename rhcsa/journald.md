@@ -47,3 +47,20 @@ Filter logs for kernel
 journalctl -k
 ```
 
+
+## Persistent Journal Logs 
+1. create the directory (/var/log/journal)
+```
+mkdir /var/log/journal
+```
+2. restart the systemd-journald service
+```
+systemctl restart systemd-journald
+```
+
+3. verify the journal directory
+```
+ls -l /var/log/journal
+```
+
+

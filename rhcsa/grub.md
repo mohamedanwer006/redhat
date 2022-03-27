@@ -126,3 +126,35 @@ systemd | search
 
 if systemd don't  see configuration file on etc it will look on user/lib/systemd
 
+## Reset root password if there is problem with /.autorelabel
+
+```bash
+# Press e to edit grub
+# End of line linux16 add the following line
+
+rd.break enforcing=0
+
+# Press ctrl-x to continue
+
+mount -o remount,rw /sysroot
+
+chroot /sysroot/
+
+passwd
+
+exit
+
+exit
+
+## After reboot
+
+# Restore context of shadow file
+
+restorecon /etc/shadow
+
+setenforce 1
+
+# reboot reboot to make sure it work correctly
+ 
+
+```
