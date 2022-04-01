@@ -64,12 +64,9 @@ exit
 exit
 ```
 
-2. Repos are available from the repo server
-  at http://repo.eight.example.com/BaseOS and
-  and http://repo.eight.example.com/AppStream for you to use during the exam.
+1. Repos are available from the repo server at http://repozeight.example.com/BaseOS and http://repo.eight.example.com/AppStream for you to use during the exam.
 
 ```bash
-
 vim /etc/yum.repos.d/BaseOS.repo
 #### add the following lines
 [BaseOS]
@@ -83,11 +80,7 @@ baseurl=http://repo.eight.example.com/AppStream
 enabled=1
 gpgcheck=0
 
-
-
-
 ## or using dnf
-
 dnf config-manager --add-repo http://repo.eight.example.com/BaseOS
 dnf config-manager --add-repo http://repo.eight.example.com/AppStream
 
@@ -130,7 +123,8 @@ cat /proc/sys/net/ipv4/
 net.ipv4.ip_forward=1
 
 ``` 
-6. Şystem1 should boot into the multiuser target by default and boot messages should be present (not silenced).
+6. System1 should boot into the multi-user target by default and boot messages should be present (not silenced).
+
 ```bash
 systemctl set-default multi-user.target
 vim /etc/default/grub
@@ -143,6 +137,7 @@ grup2-makeconfig -o /boot/grube2/grub.cfg
 reboot
 ```    
 7. Create a new 2GB volume group named "vgprac".
+
 ```bash
 lsblk
 fdisk 
@@ -152,13 +147,14 @@ w
 pvcreate /dev/sdb1
 vgcreate vgprac /dev/sdb1 
 
-``` 
-8. Create a 500MB logical volume named "lvprac" inside the "vgprac" yolume group.
-```bash
+```
 
+8. Create a 500MB logical volume named "lvprac" inside the "vgprac" yolume group.
+
+```bash
 lvcreate --name lvprac  --size 500M vgprac
 ``` 
-9.  The "lvprac" logical volume should be formatted with the xfs filesystem and mount
+9. The "lvprac" logical volume should be formatted with the xfs filesystem and mount
   persistently on the /mnt/lvprac directory.
 ```bash
 mkfs.xfs /dev/vgprac/lvprac
@@ -173,11 +169,14 @@ lvextend  --size +500M /dev/vgprac/lvprac /dev/nvme0n4p1
 
 ``` 
 11. Use the appropriate utility to create a 5TIB thin provisioned volume.
+
 ```bash
 vdo create --name vdoVolume --vdoLogicalSize 5T --device /dev/sdb2  
 ``` 
-12. Configure a basic web server that displays "Welcome to the web server" once
+
+12.  Configure a basic web server that displays "Welcome to the web server" once
   connected to it. Ensure the firewall allows the http/https services.
+
 ```bash
 yum install httpd -y
 echo "Welcome to the Web Server " > /var/www/html/index.html
@@ -193,6 +192,7 @@ firewall-cmd --list-all
 systemctl restart httpd
 
 ``` 
+
 13. Find all files that are larger than 5MB in the /etc directory and copy them to
   /find/largefiles
 ```bash
@@ -206,6 +206,7 @@ find /etc/ -size +5M -exec cp {} -rvfp /find/largefiles/ \;
    awesome."
 - If the argument is empty or anything else is given, the script should output
    "Usage ./awesome.sh me|them"
+
 ```bash
 #!/bin/bash
 if [ "$1" == "me" ] ; then
@@ -227,6 +228,7 @@ fi
    already exist, create it.
    - stewart and kevin should be part of the "marketing" group. If the group doesn't
    already exist, create it.
+
 ```bash
 
 touch /etc/skel/Welcome
