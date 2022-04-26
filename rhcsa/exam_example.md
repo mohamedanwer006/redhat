@@ -104,6 +104,7 @@ systemctl enable --now chronyd
    interface. Do this in a way that doesn't compromise your existing settings:
      a. IPV4 - 10.0.0.5/24
      b. IPV6 - fd01::100/64
+
 ```bash
 nmcli conn mod eth1 +ipv4.address 10.0.0.05/24
 nmcli conn reload
@@ -112,6 +113,7 @@ nmcli conn reload
 
 ```      
 5. Enable packet forwarding on system1. This should persist after reboot.
+
 ```bash
 vim /etc/sysctl.conf
 
@@ -156,6 +158,7 @@ lvcreate --name lvprac  --size 500M vgprac
 ``` 
 9. The "lvprac" logical volume should be formatted with the xfs filesystem and mount
   persistently on the /mnt/lvprac directory.
+
 ```bash
 mkfs.xfs /dev/vgprac/lvprac
 mkdir /mnt/lvprac
@@ -272,6 +275,7 @@ chmod 770 /accounting/
 17. Only members of the marketing group should have access to the "/marketing"
   directory. Make stewart the owner of this directory. Make the marketing group the
   group owner of the "/marketing" directory.
+
 ```bash
 mkdir /marketing
 chown stewart /marketing
@@ -280,16 +284,18 @@ chgrp marketing /marketing
 ```
 18. New files should be owned by the group owner and only the file creator should
   have the permissions to delete their own files.
+
 ```bash
 chmod  g+s  /marketing
 chmod  +t  /marketing
 chmod  g+s  /accounting
 chmod  +t  /accounting
 ```
+
 19. Create a cron job that writes "This practice exam was easy and I'm ready to ace my
    RHCSA" to /var/log/messages at 12pm only on weekdays.
-```bash
 
+```bash
 systemctl status crond
 systemctl enable --now crond
 
