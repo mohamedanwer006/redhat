@@ -99,3 +99,142 @@ cut -d : -f 7 /etc/passwd |sort|uniq
 so we use `sort` to sort value and ` uniq `to remove duplicate value
 
 
+## Redirection
+
+default redirection is to stdout screen
+
+default redirection is to stdin keyboard
+
+### file descriptor
+- #### 0 stdin
+- #### 1 stdout
+- #### 2 stderr
+
+```bash 
+# output redirection
+# > file
+ls > file.txt
+# if file exist will overwrite it
+# if file not exist will create it
+
+# append redirection
+# >> file
+ls >> file.txt
+# if file exist will append to it
+# if file not exist will create it
+
+
+# input redirection
+< file
+
+
+# error redirection
+ls 2> file.txt
+# if file exist will overwrite it
+# if file not exist will create it
+
+# redirect both
+ls -R / > file1.txt 2> file5.txt
+
+
+```
+
+### pipe
+```bash
+ls | grep .sh
+# will show all .sh files
+```
+
+### tee
+```bash
+# pipe
+# |
+ls -R / |tee file1.txt |less
+```
+
+### word count
+```bash
+wc /etc/passwd
+# will show number of lines
+# number of words
+# number of characters
+
+# show number of line
+wc -l /etc/passwd
+# show number of words
+wc -w /etc/passwd
+# show number of characters
+wc -c /etc/passwd
+
+wc -l < file.txt # read from file
+
+```
+
+### diff
+```bash
+diff file1.txt file2.txt
+# will show the difference between file1.txt and file2.txt
+# 2c2 # c for change between line 2 in file 1 and line 2 in file 2
+# 1a2 # a for add or append line 2 in file 2 in file 1
+# 2d1 # d for delete line 2 in file 1
+```
+
+## grep
+```bash
+grep -i hello file.txt
+# will show all lines that contain hello in file.txt
+# -i ignore case
+grep nc /etc/passwd
+# search as pattern
+# will show all lines that contain nc in passwd
+grep -w nc /etc/passwd
+# search as word
+# will show all lines that contain nc word in passwd
+grep bash /etc/passwd
+# 
+grep -v bash /etc/passwd
+# will show all lines that not contain bash in passwd
+# -v is inverse or not
+
+
+## count users have bash
+grep -c bash /etc/passwd
+#-c count
+
+greps -n mohamed /etc/passwd
+# -n number
+# will show number of line
+
+grep -l mohamed /etc/passwd /etc/group
+# -l list
+# will show file if it contain mohamed
+
+```
+## tr 
+
+```bash
+tr a b
+# will replace all a with b
+echo Hello World | tr 'a-z' 'A-Z'
+# will print HELLO WORLD
+```
+### cut
+```bash
+cut -d: -f1 /etc/passwd
+# -d delimiter
+# -f field
+cut -d: -f1,3 /etc/passwd
+
+``` 
+
+## sort
+```bash
+
+sort -t: -k3 /etc/passwd
+# -t delimiter
+# -k field
+# sort by field 3
+sort -t: -k3 -n /etc/passwd
+# sort by field 3 and number
+
+```

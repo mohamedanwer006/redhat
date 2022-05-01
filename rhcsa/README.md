@@ -2,6 +2,7 @@
 
 ## [**Get-started**](./get-started.md) <br> 
 ## [**File_search**](./file_search.md) <br> 
+## [**Environment_var**](./environment_var.md) <br> 
 ## [**Access_control_list**](./access_control_list.md) <br> 
 ## [**Ntp_configuration**](./ntp_configuration.md) <br> 
 ## [**FireWall**](./firewall.md) <br> 
