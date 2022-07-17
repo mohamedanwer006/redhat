@@ -48,7 +48,7 @@ chroot /sysroot
 passwd
 exit
 exit
-restorecon /sysroot
+restorecon /etc/shadow
 setenforce 1
 
 # restart to check
